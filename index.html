@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryu Aditya Profile</title>
+    <style>
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #D2D2D2;
+            background-image:
+            repeating-linear-gradient(
+                to right, transparent 0 100px,
+                #25283b22 100px 101px
+            ),
+            repeating-linear-gradient(
+                to bottom, transparent 0 100px,
+                #25283b22 100px 101px
+            );
+        }
+        
+        body::before{
+            position: absolute;
+            width: min(1400px, 90vw);
+            top: 10%;
+            left: 50%;
+            height: 90%;
+            transform: translateX(-50%);
+            content: '';
+            background-image: url(img/bg.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: top center;
+            pointer-events: none;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="banner">
+        <div class="slider" style="--quantity: 10">
+            <div class="item" style="--position: 1"><img src="img/happines.png" alt=""></div>
+            <div class="item" style="--position: 3"><img src="img/lucky.png" alt=""></div>
+            <div class="item" style="--position: 5"><img src="img/dragon.png" alt=""></div>
+            <div class="item" style="--position: 7"><img src="img/friends.png" alt=""></div>
+        </div>
+        <div class="content">
+            <h1 data-content="Schzee">
+                Schzee
+            </h1>
+            <div class="model"></div>
+        </div>
+    </div>
+    <div class="audio-container">
+        <button id="play-button"></button>
+        <audio id="audio-player">
+            <source src="/music/Inazuma.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="additional-content">
+        <section id="about-me">
+            <h2>About Me!</h2>
+            <p>I studied at President University majoring in Information Technology in the field of Artificial Intelligence. I have a hobby of drawing and editing videos to fill my free time. and I am also interested in various fields of design, both for websites and personal needs.
+            </p>
+        </section>
+        
+        <section id="experience">
+            <h2>Experience</h2>
+            <p>All of my experience in Information Technology in the field of Artificial Inteligence.</p>
+            <a href="./experience/experience.html"> My Experiences </a>
+        </section>
+        
+        <section id="certificate">
+            <h2>Certificate</h2>
+            <p>All of my certificates that I have obtained.</p>
+            <a href="./certificate/certificate.html"> My Certificates </a>
+        </section>
+    </div>
+
+    <footer id="footer">
+        <div class="footer-content">
+            <p>&copy; 2023 Ryu Aditya. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/honestklee" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.instagram.com/ryuuadtya/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.linkedin.com/in/rizky-ryu-245869271/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll("section h2");
+            
+            sections.forEach(section => {
+                const originalText = section.textContent;
+                const chars = originalText.split('');
+                let interval;
+                
+                function randomizeText() {
+                    section.textContent = chars.map(() => String.fromCharCode(33 + Math.random() * 94)).join('');
+                }
+                
+                function restoreText() {
+                    clearInterval(interval);
+                    section.textContent = originalText;
+                }
+                
+                function startEffect() {
+                    interval = setInterval(randomizeText, 50);
+                    setTimeout(restoreText, 2000);
+                }
+                
+                startEffect();
+                setInterval(startEffect, 10000); // Loop every 10 seconds
+            });
+        });
+    </script>
+</body>
+</html>
