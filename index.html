@@ -87,24 +87,64 @@
         <section id="hobby">
             <h2>Hobby</h2>
             <p>Here are some of my hobbies that I enjoy in my free time.</p>
-            <div class="hobby-container">
-                <div class="hobby-item"><img src="hmg/1.jpg" alt="Hobby 1"></div>
-                <div class="hobby-item"><img src="hmg/2.jpg" alt="Hobby 2"></div>
-                <div class="hobby-item"><img src="hmg/3.jpg" alt="Hobby 3"></div>
-                <div class="hobby-item"><img src="hmg/5.jpg" alt="Hobby 4"></div>
-            </div>
-            <div class="hobby-container">
-                <div class="hobby-item"><img src="hmg/3d1.png" alt="Hobby 6"></div>
-                <div class="hobby-item"><img src="hmg/3d2.jpg" alt="Hobby 7"></div>
-                <div class="hobby-item"><img src="hmg/3d3.png" alt="Hobby 8"></div>
-                <div class="hobby-item"><img src="hmg/3d4.png" alt="Hobby 9"></div>
+            <div class="wrapper">
+                <div class="container">
+                    <input type="radio" name="slide" id="c1" checked>
+                    <label for="c1" class="card">
+                        <div class="row">
+                            <div class="icon">1</div>
+                            <div class="description">
+                                <h4>Arts</h4>
+                                <p>Arts By: Schzee</p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c2" >
+                    <label for="c2" class="card">
+                        <div class="row">
+                            <div class="icon">2</div>
+                            <div class="description">
+                                <h4>3D Model</h4>
+                                <p>3D Model By: Schzee</p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c3" >
+                    <label for="c3" class="card">
+                        <div class="row">
+                            <div class="icon">3</div>
+                            <div class="description">
+                                <h4>Sing a Song</h4>
+                                <p>Songs covered By: Schzee</p>
+                            </div>
+                        </div>
+                    </label>
+                    <input type="radio" name="slide" id="c4" >
+                    <label for="c4" class="card">
+                        <div class="row">
+                            <div class="icon">4</div>
+                            <div class="description">
+                                <h4>Video Editing</h4>
+                                <p>Video Edit Result By: Schzee</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
             </div>
         </section>
+
+        <section id="skills">
+            <h2>Programming Skills</h2>
+            <p>Personal Skill Ratings.</p>
+        </section>
+
     </div>
+
+    
 
     <footer id="footer">
         <div class="footer-content">
-            <p>&copy; 2023 Ryu Aditya. All rights reserved.</p>
+            <p>&copy; 2024 Ryu Aditya. All rights reserved.</p>
             <div class="social-links">
                 <a href="https://github.com/honestklee" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 <a href="https://www.instagram.com/ryuuadtya/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
@@ -139,6 +179,17 @@
                 
                 startEffect();
                 setInterval(startEffect, 10000); // Loop every 10 seconds
+            });
+        });
+    </script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
