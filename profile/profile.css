@@ -22,18 +22,11 @@
 .timeline {
     position: relative;
     padding: 40px 0;
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 .timeline::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background: #d1d1d1;
-    top: 0;
-    bottom: 0;
-    left: 30px;
-    transform: none;
+    content: none;
 }
 
 .timeline-item {
@@ -42,13 +35,7 @@
 }
 
 .timeline-item:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    background: #d1d1d1;
-    height: 120px;
-    left: 43.5px;
-    top: 50px;
+    content: none;
 }
 
 .timeline-content {
@@ -58,19 +45,21 @@
 }
 
 .year {
-    width: 120px;
+    width: 100px;
     text-align: right;
-    padding-right: 30px;
+    padding-right: 100px;
     font-weight: bold;
     font-size: 1.3em;
+    white-space: nowrap; /* Prevent line breaks */
+    margin-right: 40px;
 }
 
 .dot {
-    width: 30px;
-    height: 30px;
-    background: #d1d1d1;
+    width: 20px;
+    height: 20px;
+    background: #1a2a4f; /* Dark blue color */
     border-radius: 50%;
-    margin: 0 30px;
+    margin: 0 1px;
     flex-shrink: 0;
     transition: all 0.3s ease;
     border: 3px solid #fff;
@@ -79,14 +68,28 @@
     z-index: 2;
 }
 
+@keyframes loading {
+    0% {
+        transform: scale(1);
+        background-color: #1a2a4f;
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: #000;
+    }
+    100% {
+        transform: scale(1);
+        background-color: #1a2a4f;
+    }
+}
+
 .timeline-item.active .dot {
-    background: #000;
-    box-shadow: 0 0 0 3px #000;
-    transform: scale(1.2);
+    animation: none;
+    background-color: pink;
 }
 
 .timeline-item.active::after {
-    background: #000;
+    background: #000; /* Black color for active line */
 }
 
 .content {
@@ -104,4 +107,35 @@
     margin: 10px 0 0;
     color: #666;
     font-size: 1.2em;
+}
+
+.photo-layout {
+    display: flex;
+    gap: 10px; /* Space between images */
+    margin-top: 10px; /* Space above the image layout */
+}
+
+.photo-slot {
+    width: 100px; /* Width of each image */
+    height: 100px; /* Height of each image */
+    background-color: #e0e0e0; /* Placeholder background color */
+    border: 1px solid #ccc; /* Border around each image */
+    border-radius: 5px; /* Rounded corners */
+    object-fit: cover; /* Ensure images cover the slot without distortion */
+}
+
+@media (max-width: 768px) {
+    .about-me {
+        padding: 10px;
+    }
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .timeline-content {
+        width: 100%;
+    }
+    .description {
+        font-size: 1rem;
+    }
 }
