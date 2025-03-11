@@ -186,9 +186,19 @@ body {
     color: #25283B;
     margin-bottom: 20px;
     position: relative;
+    text-align: center;
 }
 
 .additional-content p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    color: #25283B;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.additional-content p1 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.2em;
     color: #25283B;
@@ -271,6 +281,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 #play-button::before {
@@ -284,7 +295,7 @@ body {
     content: '❚❚';
 }
 
-#experience a, #certificate a {
+#experience a, #certificate a, #about-me a {
     display: inline-block;
     padding: 8px 16px;
     font-family: 'Poppins', sans-serif;
@@ -300,11 +311,16 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto;
 }
 
-#experience a:hover, #certificate a:hover {
+#experience a:hover, #certificate a:hover, #about-me a:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#experience, #certificate, #about-me {
+    text-align: center;
 }
 
 #hobby {
@@ -427,16 +443,16 @@ input:checked + label .description {
 }
 
 .card[for="c1"] {
-    background-image: url('./img/h1.png');
+    background-image: url('./img/I1.png');
 }
 .card[for="c2"] {
-    background-image: url('./img2.jpeg');
+    background-image: url('./img/I2.png');
 }
 .card[for="c3"] {
-    background-image: url('./img3.jpeg');
+    background-image: url('./img/I4.png');
 }
 .card[for="c4"] {
-    background-image: url('./img4.jpeg');
+    background-image: url('./img/I3.png');
 }
 
 .title {
@@ -452,8 +468,8 @@ input:checked + label .description {
 
 .skill-container {
     display: flex;
-    justify-content:between;
-    justify-items: center;
+    justify-content: center;
+    align-items: center;
     gap: 100px;
 }
 
@@ -464,6 +480,8 @@ input:checked + label .description {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 50px;
+    align-items: center;
+    text-align: center;
 }
 
 .bar-container {
@@ -514,3 +532,5 @@ input:checked + label .description {
 
 
 }
+
+
