@@ -5,25 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience</title>
     <link rel="stylesheet" href="experience.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
     <a href="../index.html" style="position: absolute; top: 10px; left: 10px; display: inline-block; padding: 10px 20px; background-color: #1a2a4f; color: white; text-decoration: none; border-radius: 5px;">Back</a>
     <div class="certificate-wrapper">
         <h1 class="certificate-title">EXPERIENCES</h1>
         <div class="certificate-content">
-            <img src="./epg/T1.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [Badan Sertifikat Manajemen Risiko: Training Provider]</p>
-            <img src="./epg/A1.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [Badan Sertifikat Manajemen Risiko: Admin]</p>
-            <img src="./epg/Nutrients.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [Nutrients Website]</p>
-            <img src="./epg/QnA.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [NutrientsAI]</p>
-            <img src="./epg/Av1.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [Avian Sustainability Page]</p>
-            <img src="./epg/Av2.png" alt="Experience" class="certificate-image">
-            <p class="certificate-description">Project: [Avian Product Page]</p>
+            <div class="projects-grid">
+                <div class="folder-card">
+                    <div class="folder-tab"><span>BSMR Project</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/BSMR1.png" alt="BSMR Project slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/BSMR2.png" alt="BSMR Project slide 2"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/BSMR3.png" alt="BSMR Project slide 3"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">BSMR Project</h3>
+                        <p class="project-desc">Development :  NextJS,  SQLSequelize, Python, MySQL, ReactJS, TailWind</p>
+                    </div>
+                </div>
+
+                <div class="folder-card">
+                    <div class="folder-tab"><span>Safety Patrol Project</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/SP1.png" alt="Safety Patrol Project slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/SP2.png" alt="Safety Patrol Project slide 2"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/SP3.png" alt="Safety Patrol Project slide 3"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Safety Patrol Project</h3>
+                        <p class="project-desc">Development :  .NET,  Bootstrap, SQLServer</p>
+                    </div>
+                </div>
+
+                <div class="folder-card">
+                    <div class="folder-tab"><span>Avian Project</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Av1.png" alt="Avian Project slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Av2.png" alt="Avian Project slide 2"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Avian Project</h3>
+                        <p class="project-desc">Development :  NextJS, Python, MySQL, TailWind</p>
+                    </div>
+                </div>
+
+                <div class="folder-card">
+                    <div class="folder-tab"><span>Fall Detection Web Based</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Fall1.png" alt="Fall Detection slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Fall2.png" alt="Fall Detection slide 2"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Fall3.png" alt="Fall Detection slide 3"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Fall Detection Web Based</h3>
+                        <p class="project-desc">Development :  NextJS,  PrismaDB, ReactJS, MySQL, TailWind</p>
+                    </div>
+                </div>
+
+                <div class="folder-card">
+                    <div class="folder-tab"><span>Message Card</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Card1.png" alt="Message Card slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/Card2.png" alt="Message Card slide 2"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Message Card</h3>
+                        <p class="project-desc">Development :  NextJS, TailWind</p>
+                    </div>
+                </div>
+
+                <div class="folder-card">
+                    <div class="folder-tab"><span>Macro Nutrients Tracker</span></div>
+                    <div class="swiper project-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/MacroNutrients.png" alt="Macro Nutrients slide 1"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/MacroNutrients2.png" alt="Macro Nutrients slide 2"></div>
+                            <div class="swiper-slide"><img loading="lazy" src="./epg/MacroNutrients3.png" alt="Macro Nutrients slide 2"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <div class="project-meta">
+                        <h3 class="project-title">Macro  Nutrients Tracker</h3>
+                        <p class="project-desc">Development : HTML, CSS, SCSS, JS, Tailwind, PHP, BERT Model, Python, MySQL</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            document.querySelectorAll('.project-swiper').forEach(function(container){
+                const swiper = new Swiper(container, {
+                    slidesPerView: 1,
+                    spaceBetween: 16,
+                    loop: true,
+                    pagination: {
+                        el: container.querySelector('.swiper-pagination'),
+                        clickable: true
+                    },
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false
+                    }
+                });
+                // Pause autoplay on hover for better UX on desktop
+                container.addEventListener('mouseenter', () => swiper.autoplay.stop());
+                container.addEventListener('mouseleave', () => swiper.autoplay.start());
+            });
+        });
+    </script>
+<div class="lightbox-overlay" id="lightbox"><span class="lightbox-close" id="lightboxClose">×</span><div class="lightbox-content"><img id="lightboxImg" src="" alt=""></div></div>
+<script>
+ (function(){
+  const overlay=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lightboxImg');
+  const lbClose=document.getElementById('lightboxClose');
+  if(!overlay||!lbImg||!lbClose) return;
+  document.querySelectorAll('.project-swiper img').forEach(function(img){
+    img.style.cursor='zoom-in';
+    img.addEventListener('click', function(){
+      lbImg.src=img.src;
+      overlay.classList.add('active');
+    });
+  });
+  overlay.addEventListener('click', function(e){
+    if(e.target===overlay || e.target===lbClose){ overlay.classList.remove('active'); lbImg.src=''; }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape'){ overlay.classList.remove('active'); lbImg.src=''; }
+  });
+ })();
+</script>
 </body>
 </html>
