@@ -4,47 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ryu Aditya Profile</title>
-    <style>
-        
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body{
-            background-color: #D2D2D2;
-            background-image:
-            repeating-linear-gradient(
-                to right, transparent 0 100px,
-                #25283b22 100px 101px
-            ),
-            repeating-linear-gradient(
-                to bottom, transparent 0 100px,
-                #25283b22 100px 101px
-            );
-        }
-        
-        body::before{
-            position: absolute;
-            width: min(1400px, 90vw);
-            top: 10%;
-            left: 50%;
-            height: 90%;
-            transform: translateX(-50%);
-            content: '';
-            background-image: url(img/bg.png);
-            background-size: 100%;
-            background-repeat: no-repeat;
-            background-position: top center;
-            pointer-events: none;
-        }
-    </style>
+    
     <link rel="stylesheet" href="profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="profile.js" defer></script>
 </head>
 <body>
-    <a href="../index.html" style="position: absolute; top: 10px; left: 10px; display: inline-block; padding: 10px 20px; background-color: #1a2a4f; color: white; text-decoration: none; border-radius: 5px;">Back</a>
+    <a href="../index.html" class="back-btn">X</a>
     <section class="about-me">
         <h2>About Me</h2>
         <p class="description">Hello I'm Ryu Aditya (Schzee or HonestKlee) is The same person of me, I Like to do some activites like playing Basket Ball, Drawing, Editing, and etc. Below is The Time Line of my Life:
@@ -55,7 +21,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="year">2019 - 2022</div>
-                    <div class="dot"></div>
+                    <div class="dot" style="background-image: url('./pmg/SMAN.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>SMA NEGERI 1 CIKARANG UTARA</h3>
                         <p>
@@ -67,8 +33,8 @@
             <!-- Kuliah -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="year">2022 - Present</div>
-                    <div class="dot"></div>
+                    <div class="year">2022 - 2025 Dec</div>
+                    <div class="dot" style="background-image: url('./pmg/PU.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>PRESIDENT UNIVERSITY</h3>
                         <p>I studying at President University, I majored in IT in the field of artificial intelligence, I have learned several things about website developers, making 3D animations, and training a model. I am also active in several campus organization events, such as Computing Atmosphere 2023, and Google Development Student Clubs organized by ITB</p>
@@ -79,8 +45,8 @@
             <!-- Kerja -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="year">2024 - Present</div>
-                    <div class="dot"></div>
+                    <div class="year">2024 Sep - 2025 Apr</div>
+                    <div class="dot" style="background-image: url('./pmg/Quantum.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>QUANTUM TEKNOLOGI NUSANTARA</h3>
                         <p>I working at Quantum Teknologi Nusantara in September 2024, where I got a position as a Software Engineer, for the last 5 months I have completed important points in developing a website that was requested directly by the Risk Management Certification Agency company, and in the last 2 months I have been actively developing a website for Avian.</p>
@@ -90,11 +56,22 @@
             <!-- Kerja -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="year">Apr - Jul 2024</div>
-                    <div class="dot"></div>
+                    <div class="year">2024 Apr - 2024 Jul</div>
+                    <div class="dot" style="background-image: url('../img/akunimpact.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>AKUNIMPACT</h3>
                         <p>I used to work at AKUNIMPACT, I worked as an Customer Service there, I have learned several things about excel, account management, data management, and social media management.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="year">2024 Apr - 2024 Jul</div>
+                    <div class="dot" style="background-image: url('./pmg/Mattel.png')" aria-hidden="true"></div>
+                    <div class="content">
+                        <h3>MATTEL INC</h3>
+                        <p>I have worked in Mattel as EHS & Compliance and my responsibilities is to develop every apps and datas for employee and manager. example : Safety Patrol, Permit To Work System, and 5s Schedule.</p>
                     </div>
                 </div>
             </div>
@@ -109,7 +86,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="year">Jan - Mei 2024</div>
-                    <div class="dot"></div>
+                    <div class="dot" style="background-image: url('../img/ainutrients.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>AI NUTRIENTS</h3>
                         <p>I Created AI Nutrients Checker, In the Nutrient checker have 3 features, (1)Daily Nutrients Record, the user can add the data to the website and can maintain their Daily Nutrients, (2) Nutrient Calculator The user can calculate their Nutrients based on wight, height, and food, (3)AI Nutrinets, The user can ask the AI about all calories, carbohydrate and grease of all the food and user can ask about the food itself. </p>
@@ -120,7 +97,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="year">Sep - Nov 2024</div>
-                    <div class="dot"></div>
+                    <div class="dot" style="background-image: url('./pmg/meepo.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>MEEPO</h3>
                         <p>
@@ -133,7 +110,7 @@
             <div class="timeline-item">
                 <div class="timeline-content">
                     <div class="year">Nov - Jan 2025</div>
-                    <div class="dot"></div>
+                    <div class="dot" style="background-image: url('./pmg/BSMR.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>BSMR</h3>
                         <p>At BSMR I had several task for remake the BSMR Website, Start from create the Account Role, Training Provider Dashboard and Admin Dashboard, since that I develop the website only with my supervisor, at the time I have a job for develop Admin Dashboard like create Admin Account Management, Member Account Management, and Training Provider Account Management. and of course I have a job for create some statistic data for suggestion based on filter and etc. I develop the website with using NextJS, Python, and SQL Alchemy as ORM </p>
@@ -144,15 +121,45 @@
             <!-- Kerja -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="year">Feb - Present</div>
-                    <div class="dot"></div>
+                    <div class="year">Feb - April 2025</div>
+                    <div class="dot" style="background-image: url('./pmg/Avian.png')" aria-hidden="true"></div>
                     <div class="content">
                         <h3>AVIAN BRANDS</h3>
                         <p>At Avian Brands I have a several task, (1) Create Sustainability Page or (Halaman Keberlanjutan) and (2) Create Products Page, Because my position In the Avian Project as Front End which mean for the Products Page need more data like Paint, Description, Weight, Colours, and etc. I Develop this web with using NextJS v.15 its so very different with BSMR because I used v.14 for BSMR Website.</p>
                     </div>
                 </div>
             </div>
-            
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="year">May - Nov 2025</div>
+                    <div class="dot" style="background-image: url('../img/project.png')" aria-hidden="true"></div>
+                    <div class="content">
+                        <h3>Permit To Work System</h3>
+                        <p>When Im at Mattel I had responsibilities to maintenance and develop this web using .NET Framework and SQL Server. Actually this web its for Permition when someone want to do working on height, hot, and etc so their  Project  Manager must knows  and agree about that.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="year">May - Nov 2025</div>
+                    <div class="dot" style="background-image: url('../img/project.png')" aria-hidden="true"></div>
+                    <div class="content">
+                        <h3>Safety Patrol</h3>
+                        <p>Since Im at Mattel I had responsibilities to create a system for reporting about safety in  every areas, so they want to remake their apps to web based and its important for safety in every areas because if something happen this web will help the manager to provide the solution and give the evaluation for every areas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="year">Jan - August 2025 </div>
+                    <div class="dot" style="background-image: url('../img/project.png')" aria-hidden="true"></div>
+                    <div class="content">
+                        <h3>Fall Detection in every  Web Based</h3>
+                        <p>This web will help Nurse and Doctor to Analyze Patient when Patient need to help  in Bathroom or if patient have emergency  situation.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </body>
