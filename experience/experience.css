@@ -204,8 +204,16 @@ body {
 #footer .social-links a:hover { opacity: 1; color: #5b4bff; }
 #footer .social-links i { font-size: 18px; }
 /* Sticky footer layout */
-html, body { height: 100%; }
+html, body { min-height: 100vh; }
 body { display: flex; flex-direction: column; }
 .certificate-wrapper { flex: 1; display: flex; flex-direction: column; }
 .certificate-content { flex: 1; }
 #footer { margin-top: auto; width: 100%; }
+
+.projects-grid { min-width: 0; }
+/* Layout stability fixes */
+body { width: 100%; overflow-x: hidden; }
+.certificate-wrapper { width: 100%; }
+.certificate-content { width: 100%; min-width: 0; }
+.projects-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.project-swiper { width: 100%; }
