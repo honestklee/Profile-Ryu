@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Aktura';
+  src: url('/fonts/Aktura-Regular.woff2') format('woff2'),
+       url('/fonts/Aktura-Regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@theme {
+  --font-heading: 'Aktura', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+/* ── Light theme (default) ── */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f5f5;
+  --color-text: #0a0a0a;
+  --color-text-secondary: #555555;
+  --color-border: #e0e0e0;
+  --color-accent: #000000;
+  --color-accent-hover: #333333;
+  --color-card-bg: #ffffff;
+  --color-toggle-bg: #e5e5e5;
+  --color-ornament: rgba(0, 0, 0, 0.03);
+  --color-ornament-strong: rgba(0, 0, 0, 0.06);
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  --color-bg: #0a0a0a;
+  --color-bg-secondary: #141414;
+  --color-text: #f0f0f0;
+  --color-text-secondary: #a0a0a0;
+  --color-border: #2a2a2a;
+  --color-accent: #ffffff;
+  --color-accent-hover: #cccccc;
+  --color-card-bg: #141414;
+  --color-toggle-bg: #2a2a2a;
+  --color-ornament: rgba(255, 255, 255, 0.015);
+  --color-ornament-strong: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Custom cursor — sword cross "+" shape, full black, no outline ── */
+* {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='11' y='2' width='2' height='20' fill='%23000'/%3E%3Crect x='6' y='8' width='12' height='2' fill='%23000'/%3E%3Crect x='10' y='1' width='4' height='3' rx='1' fill='%23000'/%3E%3C/svg%3E") 12 12, crosshair;
+}
+
+[data-theme="dark"] * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect x='11' y='2' width='2' height='20' fill='%23fff'/%3E%3Crect x='6' y='8' width='12' height='2' fill='%23fff'/%3E%3Crect x='10' y='1' width='4' height='3' rx='1' fill='%23fff'/%3E%3C/svg%3E") 12 12, crosshair;
+}
+
+a, button, [role="button"], input[type="submit"], label[for] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='14.5' y='2' width='3' height='28' fill='%23000'/%3E%3Crect x='7' y='10' width='18' height='3' fill='%23000'/%3E%3Crect x='13' y='0.5' width='6' height='4' rx='1.5' fill='%23000'/%3E%3C/svg%3E") 16 16, pointer !important;
+}
+
+[data-theme="dark"] a,
+[data-theme="dark"] button,
+[data-theme="dark"] [role="button"],
+[data-theme="dark"] input[type="submit"],
+[data-theme="dark"] label[for] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect x='14.5' y='2' width='3' height='28' fill='%23fff'/%3E%3Crect x='7' y='10' width='18' height='3' fill='%23fff'/%3E%3Crect x='13' y='0.5' width='6' height='4' rx='1.5' fill='%23fff'/%3E%3C/svg%3E") 16 16, pointer !important;
+}
+
+/* ── Base styles ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Royal ornamental background ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    /* Corner flourishes */
+    radial-gradient(ellipse 120px 120px at 0% 0%, var(--color-ornament-strong) 0%, transparent 70%),
+    radial-gradient(ellipse 120px 120px at 100% 0%, var(--color-ornament-strong) 0%, transparent 70%),
+    radial-gradient(ellipse 120px 120px at 0% 100%, var(--color-ornament-strong) 0%, transparent 70%),
+    radial-gradient(ellipse 120px 120px at 100% 100%, var(--color-ornament-strong) 0%, transparent 70%),
+    /* Vertical center line */
+    linear-gradient(to right, transparent 49.7%, var(--color-ornament) 49.7%, var(--color-ornament) 50.3%, transparent 50.3%),
+    /* Diamond lattice pattern */
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      transparent 40px,
+      var(--color-ornament) 40px,
+      var(--color-ornament) 41px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 40px,
+      var(--color-ornament) 40px,
+      var(--color-ornament) 41px
+    );
+  transition: background-image 0.4s ease;
+}
+
+/* ── Ornamental border frame ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 12px;
+  pointer-events: none;
+  z-index: 1;
+  border: 1px solid var(--color-ornament-strong);
+  border-radius: 4px;
+  transition: border-color 0.4s ease;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+}
+
+/* ── Smooth scroll sections ── */
+section {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Card animation ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* ── Selection styling ── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
