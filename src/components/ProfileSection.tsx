@@ -1,10 +1,110 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function ProfileSection() {
+  const revealImageRef = useRef<HTMLDivElement>(null);
+  const pointer = useRef({
+    x: 0,
+    y: 0,
+    targetX: 0,
+    targetY: 0,
+    radius: 0,
+    targetRadius: 0,
+    active: false,
+  });
+  const animationFrame = useRef<number | null>(null);
+
+  const animateSpotlight = () => {
+    const image = revealImageRef.current;
+    if (!image) return;
+
+    const position = pointer.current;
+    position.x += (position.targetX - position.x) * 0.18;
+    position.y += (position.targetY - position.y) * 0.18;
+    position.radius += (position.targetRadius - position.radius) * 0.14;
+
+    const radius = Math.max(0, position.radius);
+    const mask = `radial-gradient(circle ${radius}px at ${position.x}px ${position.y}px, transparent 0%, rgba(0, 0, 0, 0.18) 62%, black 100%)`;
+    image.style.maskImage = mask;
+    image.style.webkitMaskImage = mask;
+
+    const isMoving =
+      Math.abs(position.targetX - position.x) > 0.5 ||
+      Math.abs(position.targetY - position.y) > 0.5 ||
+      Math.abs(position.targetRadius - position.radius) > 0.5;
+
+    if (isMoving) {
+      animationFrame.current = requestAnimationFrame(animateSpotlight);
+    } else {
+      animationFrame.current = null;
+      if (!position.active) {
+        image.style.maskImage = "none";
+        image.style.webkitMaskImage = "none";
+      }
+    }
+  };
+
+  const scheduleSpotlight = () => {
+    if (animationFrame.current === null) {
+      animationFrame.current = requestAnimationFrame(animateSpotlight);
+    }
+  };
+
+  const moveSpotlight = (event: React.PointerEvent<HTMLElement>) => {
+    if (event.pointerType === "touch") return;
+
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const position = pointer.current;
+    position.targetX = event.clientX - bounds.left;
+    position.targetY = event.clientY - bounds.top;
+    position.targetRadius = 230;
+    position.active = true;
+    scheduleSpotlight();
+  };
+
+  const hideSpotlight = () => {
+    pointer.current.targetRadius = 0;
+    pointer.current.active = false;
+    scheduleSpotlight();
+  };
+
+  useEffect(
+    () => () => {
+      if (animationFrame.current !== null) {
+        cancelAnimationFrame(animationFrame.current);
+      }
+    },
+    [],
+  );
+
   return (
     <section
       id="profile"
-      className="relative flex min-h-screen items-center justify-center px-4 py-20 text-center sm:px-8"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 text-center sm:px-8"
+      onPointerEnter={moveSpotlight}
+      onPointerMove={moveSpotlight}
+      onPointerLeave={hideSpotlight}
     >
-      <div className="w-full max-w-5xl">
+      <div
+        aria-hidden="true"
+        className="profile-image-base pointer-events-none absolute inset-0"
+      />
+      <div
+        ref={revealImageRef}
+        aria-hidden="true"
+        className="profile-image-reveal pointer-events-none absolute inset-0"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-(--color-bg) to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-linear-to-b from-transparent to-(--color-bg)"
+      />
+
+      <div className="relative z-10 w-full max-w-5xl">
         {/* Decorative dot */}
         <div
           className="mx-auto mb-8 h-2.5 w-2.5 rounded-full"
@@ -27,7 +127,7 @@ export default function ProfileSection() {
           className="mx-auto mb-12 max-w-lg text-[0.95rem] font-light leading-relaxed sm:text-base"
           style={{
             fontFamily: "var(--font-body)",
-            color: "var(--color-text-secondary)",
+            color: "#000000",
             letterSpacing: "0.01em",
           }}
         >

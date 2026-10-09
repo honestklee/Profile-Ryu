@@ -46,7 +46,7 @@ export default function Navbar() {
           onClick={(e) => handleClick(e, item.href)}
           className="group relative text-xs tracking-[0.12em] transition-all duration-300 sm:text-base sm:tracking-[0.25em]"
           style={{
-            fontFamily: "var(--font-heading)",
+            fontFamily: "var(--font-body)",
             color: "var(--color-text)",
             textDecoration: "none",
           }}

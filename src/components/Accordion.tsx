@@ -8,6 +8,21 @@ interface CardItem {
   href: string;
 }
 
+function CloverMark({ className = "" }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 40 40"
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M19.98 18.37C14.9 14.74 11.06 11.56 12.7 7.28c1.32-4.29 7.69-4.34 8.28 1.04.31 3.42-.48 6.6-1 10.05Zm1.65 1.48c3.42-5.09 6.6-8.93 10.88-7.29 4.29 1.32 4.34 7.69-1.04 8.28-3.42.31-6.6-.48-10.05-.99Zm-1.6 1.67c5.08 3.42 8.92 6.6 7.28 10.88-1.32 4.29-7.69 4.34-8.28-1.04-.31-3.42.48-6.6 1-10.05Zm-1.67-1.61c-3.42 5.08-6.6 8.92-10.88 7.28-4.29-1.32-4.34-7.69 1.04-8.28 3.42-.31 6.6.48 10.05 1Z" />
+      <path d="M19.7 21.2c-2.57 4.24-4.11 7.84-2.9 11.12.44 1.2 1.56 1.89 2.77 1.89s2.34-.69 2.78-1.89c1.2-3.28-.34-6.88-2.91-11.12Z" />
+      <circle cx="20" cy="20" r="2.6" />
+    </svg>
+  );
+}
+
 const cards: CardItem[] = [
   {
     id: 1,
@@ -51,22 +66,21 @@ export default function ExpandCards() {
           <img
             src={card.image}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover opacity-30 transition duration-500 group-hover:scale-100 group-hover:opacity-70"
+            className="absolute inset-0 h-full w-full scale-105 object-cover opacity-0 transition duration-500 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100"
           />
 
-          <span className="absolute inset-0 flex items-center justify-center transition-opacity group-hover:opacity-0 group-focus-visible:opacity-0">
+          <span className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
             <span
-              className="flex h-12 w-12 items-center justify-center rounded-full text-base font-semibold sm:h-14 sm:w-14 sm:text-lg"
+              className="flex h-12 w-12 items-center justify-center rounded-full sm:h-14 sm:w-14"
               style={{
                 backgroundColor:
                   "color-mix(in srgb, var(--color-card-bg) 65%, transparent)",
                 color: "var(--color-text)",
-                fontFamily: "var(--font-body)",
                 backdropFilter: "blur(12px)",
                 border: "1px solid var(--color-border)",
               }}
             >
-              {card.id}
+              <CloverMark className="h-6 w-6 transition-transform duration-500 ease-out group-hover:rotate-180 sm:h-7 sm:w-7" />
             </span>
           </span>
 
@@ -80,17 +94,16 @@ export default function ExpandCards() {
           >
             <span className="flex min-w-0 items-end gap-4">
               <span
-                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-semibold sm:h-14 sm:w-14 sm:text-lg"
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full sm:h-14 sm:w-14"
                 style={{
                   backgroundColor:
                     "color-mix(in srgb, var(--color-card-bg) 65%, transparent)",
                   color: "var(--color-text)",
-                  fontFamily: "var(--font-body)",
                   border: "1px solid var(--color-border)",
                 }}
                 aria-hidden="true"
               >
-                {card.id}
+                <CloverMark className="h-6 w-6 sm:h-7 sm:w-7" />
               </span>
               <span className="min-w-0 overflow-hidden">
                 <span

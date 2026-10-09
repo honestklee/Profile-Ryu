@@ -21,11 +21,11 @@ const skillGroups = [
   },
   {
     title: "Business tools",
-    skills: ["Power Apps", "Power Automate", "SharePoint", "Microsoft Excel"],
+    skills: ["Power Apps", "Power Automate", "Power BI", "SharePoint", "Microsoft Excel", "Microsoft Teams"],
   },
   {
     title: "Creative",
-    skills: ["Figma", "Visual design", "Video editing"],
+    skills: ["Figma", "Visual design", "Video editing", "Blender", "Adobe Illustrator", "Adobe After Effects"],
   },
 ];
 
