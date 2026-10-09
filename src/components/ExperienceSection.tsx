@@ -176,14 +176,12 @@ export default function ExperienceSection() {
                       style={{ color: "var(--color-text-secondary)" }}
                     >
                       {experience.highlights.map((highlight) => (
-                        <li key={highlight} className="relative pl-4">
+                        <li key={highlight} className="relative pl-5">
                           <span
                             aria-hidden="true"
-                            className="absolute left-0"
-                            style={{ color: "var(--color-text)" }}
-                          >
-                            —
-                          </span>
+                            className="absolute left-0 top-[0.55em] h-1.5 w-1.5 rounded-full"
+                            style={{ backgroundColor: "var(--color-text)" }}
+                          />
                           {highlight}
                         </li>
                       ))}

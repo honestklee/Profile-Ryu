@@ -143,6 +143,30 @@ section {
   z-index: 2;
 }
 
+.profile-image-base,
+.profile-image-reveal {
+  background-position: center;
+  background-size: cover;
+}
+
+.profile-image-base {
+  background-image: url("/images/ver3.jpg");
+}
+
+.profile-image-reveal {
+  background-image: url("/images/ver2.jpg");
+}
+
+[data-theme="dark"] .profile-image-base {
+  background-image: url("/images/ver2.jpg");
+  filter: brightness(0.48) saturate(0.78);
+}
+
+[data-theme="dark"] .profile-image-reveal {
+  background-image: url("/images/ver3.jpg");
+  filter: brightness(0.48) saturate(0.78);
+}
+
 /* ── Card animation ── */
 @keyframes fadeSlideUp {
   from {
