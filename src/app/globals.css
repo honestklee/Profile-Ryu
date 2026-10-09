@@ -150,20 +150,20 @@ section {
 }
 
 .profile-image-base {
-  background-image: url("/images/ver3.jpg");
+  background-image: url("/images/Background/profile-light.jpg");
 }
 
 .profile-image-reveal {
-  background-image: url("/images/ver2.jpg");
+  background-image: url("/images/Background/profile-dark.jpg");
 }
 
 [data-theme="dark"] .profile-image-base {
-  background-image: url("/images/ver2.jpg");
+  background-image: url("/images/Background/profile-dark.jpg");
   filter: brightness(0.48) saturate(0.78);
 }
 
 [data-theme="dark"] .profile-image-reveal {
-  background-image: url("/images/ver3.jpg");
+  background-image: url("/images/Background/profile-light.jpg");
   filter: brightness(0.48) saturate(0.78);
 }
 

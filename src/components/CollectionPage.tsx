@@ -7,6 +7,7 @@ export interface CollectionItem {
   mark: string;
   accent: string;
   details: string[];
+  href?: string;
 }
 
 interface CollectionPageProps {
@@ -71,16 +72,16 @@ export default function CollectionPage({
         <div
           className={`grid gap-5 sm:gap-6 ${simple ? "md:grid-cols-3" : "lg:grid-cols-2"}`}
         >
-          {items.map((item, index) => (
-            <article
-              key={`${item.title}-${index}`}
-              className={`overflow-hidden rounded-2xl border ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
-              style={{
-                backgroundColor: "var(--color-card-bg)",
-                borderColor: "var(--color-border)",
-                boxShadow: "0 18px 48px -38px var(--color-text)",
-              }}
-            >
+          {items.map((item, index) => {
+            const card = (
+              <article
+                className={`overflow-hidden rounded-2xl border ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
+                style={{
+                  backgroundColor: "var(--color-card-bg)",
+                  borderColor: "var(--color-border)",
+                  boxShadow: "0 18px 48px -38px var(--color-text)",
+                }}
+              >
               <div
                 className={`relative flex items-center justify-center overflow-hidden border-b ${simple ? "min-h-36" : "min-h-52 lg:min-h-full"}`}
                 style={{
@@ -142,6 +143,18 @@ export default function CollectionPage({
                   {item.description}
                 </p>
 
+                {item.href && (
+                  <span
+                    className="mt-5 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em]"
+                    style={{
+                      color: "var(--color-text)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    View works <span aria-hidden="true">→</span>
+                  </span>
+                )}
+
                 {item.details.length > 0 && (
                   <ul
                     className="mt-5 flex flex-wrap gap-2 border-t pt-4"
@@ -165,8 +178,22 @@ export default function CollectionPage({
                   </ul>
                 )}
               </div>
-            </article>
-          ))}
+              </article>
+            );
+
+            return item.href ? (
+              <Link
+                key={`${item.title}-${index}`}
+                href={item.href}
+                className="group block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text-secondary)]"
+                aria-label={`View ${item.title} works`}
+              >
+                {card}
+              </Link>
+            ) : (
+              <div key={`${item.title}-${index}`}>{card}</div>
+            );
+          })}
         </div>
       </div>
     </main>
