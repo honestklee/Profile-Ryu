@@ -8,11 +8,12 @@ export const metadata: Metadata = {
 const hobbies: CollectionItem[] = [
   {
     title: "Drawing",
-    description: "Sketching ideas and creating visual artwork.",
+    description: "Sketching ideas and creating visual artwork and I'm interested in.",
     label: "Creative",
     mark: "DRAW",
     accent: "#f0a5a5",
     details: [],
+    href: "/hobbies/drawing",
   },
   {
     title: "Video Editing",
@@ -21,14 +22,16 @@ const hobbies: CollectionItem[] = [
     mark: "VIDEO",
     accent: "#a7c7ff",
     details: [],
+    href: "/hobbies/video-editing",
   },
   {
-    title: "Web & Visual Design",
+    title: "Visual Design",
     description: "Exploring layouts, interfaces, and visual styles for the web.",
     label: "Design",
     mark: "DESIGN",
     accent: "#c2a5ff",
     details: [],
+    href: "/hobbies/design",
   },
 ];
 
