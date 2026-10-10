@@ -18,6 +18,7 @@ interface CollectionPageProps {
   intro: string;
   items: CollectionItem[];
   simple?: boolean;
+  equalItemHeights?: boolean;
 }
 
 export default function CollectionPage({
@@ -26,6 +27,7 @@ export default function CollectionPage({
   intro,
   items,
   simple = false,
+  equalItemHeights = false,
 }: CollectionPageProps) {
   return (
     <main className="min-h-screen px-5 py-8 sm:px-10 sm:py-12">
@@ -72,12 +74,12 @@ export default function CollectionPage({
         </header>
 
         <div
-          className={`grid gap-5 sm:gap-6 ${simple ? "md:grid-cols-3" : "lg:grid-cols-2"}`}
+          className={`grid gap-5 sm:gap-6 ${simple ? "md:grid-cols-3" : "lg:grid-cols-2"} ${equalItemHeights ? "auto-rows-fr" : ""}`}
         >
           {items.map((item, index) => {
             const card = (
               <article
-                className={`overflow-hidden rounded-2xl border ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
+                className={`overflow-hidden rounded-2xl border ${equalItemHeights ? "h-full" : ""} ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
                 style={{
                   backgroundColor: "var(--color-card-bg)",
                   borderColor: "var(--color-border)",
@@ -223,13 +225,18 @@ export default function CollectionPage({
               <Link
                 key={`${item.title}-${index}`}
                 href={item.href}
-                className="group block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text-secondary)]"
+                className={`group block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text-secondary)] ${equalItemHeights ? "h-full" : ""}`}
                 aria-label={`View ${item.title} works`}
               >
                 {card}
               </Link>
             ) : (
-              <div key={`${item.title}-${index}`}>{card}</div>
+              <div
+                key={`${item.title}-${index}`}
+                className={equalItemHeights ? "h-full" : undefined}
+              >
+                {card}
+              </div>
             );
           })}
         </div>
