@@ -8,6 +8,8 @@ export interface CollectionItem {
   accent: string;
   details: string[];
   href?: string;
+  image?: string;
+  downloadUrl?: string;
 }
 
 interface CollectionPageProps {
@@ -16,6 +18,7 @@ interface CollectionPageProps {
   intro: string;
   items: CollectionItem[];
   simple?: boolean;
+  equalItemHeights?: boolean;
 }
 
 export default function CollectionPage({
@@ -24,6 +27,7 @@ export default function CollectionPage({
   intro,
   items,
   simple = false,
+  equalItemHeights = false,
 }: CollectionPageProps) {
   return (
     <main className="min-h-screen px-5 py-8 sm:px-10 sm:py-12">
@@ -70,12 +74,12 @@ export default function CollectionPage({
         </header>
 
         <div
-          className={`grid gap-5 sm:gap-6 ${simple ? "md:grid-cols-3" : "lg:grid-cols-2"}`}
+          className={`grid gap-5 sm:gap-6 ${simple ? "md:grid-cols-3" : "lg:grid-cols-2"} ${equalItemHeights ? "auto-rows-fr" : ""}`}
         >
           {items.map((item, index) => {
             const card = (
               <article
-                className={`overflow-hidden rounded-2xl border ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
+                className={`overflow-hidden rounded-2xl border ${equalItemHeights ? "h-full" : ""} ${simple ? "" : "lg:grid lg:grid-cols-[0.9fr_1.1fr]"}`}
                 style={{
                   backgroundColor: "var(--color-card-bg)",
                   borderColor: "var(--color-border)",
@@ -89,17 +93,25 @@ export default function CollectionPage({
                   background: `radial-gradient(ellipse at 50% 48%, color-mix(in srgb, ${item.accent} 24%, transparent), transparent 62%), repeating-linear-gradient(0deg, transparent, transparent 31px, color-mix(in srgb, var(--color-border) 42%, transparent) 32px), repeating-linear-gradient(90deg, transparent, transparent 31px, color-mix(in srgb, var(--color-border) 42%, transparent) 32px), var(--color-bg-secondary)`,
                 }}
               >
-                <span
-                  className={`select-none text-center font-black uppercase tracking-[-0.08em] ${simple ? "text-3xl sm:text-4xl" : "text-5xl sm:text-6xl"}`}
-                  style={{
-                    color: item.accent,
-                    textShadow: `0 0 36px color-mix(in srgb, ${item.accent} 38%, transparent)`,
-                    fontFamily: "var(--font-body)",
-                  }}
-                  aria-hidden="true"
-                >
-                  {item.mark}
-                </span>
+                {item.image ? (
+                  <img
+                    src={item.image}
+                    alt={`${item.title} preview`}
+                    className="absolute inset-0 h-full w-full object-contain p-3"
+                  />
+                ) : (
+                  <span
+                    className={`select-none text-center font-black uppercase tracking-[-0.08em] ${simple ? "text-3xl sm:text-4xl" : "text-5xl sm:text-6xl"}`}
+                    style={{
+                      color: item.accent,
+                      textShadow: `0 0 36px color-mix(in srgb, ${item.accent} 38%, transparent)`,
+                      fontFamily: "var(--font-body)",
+                    }}
+                    aria-hidden="true"
+                  >
+                    {item.mark}
+                  </span>
+                )}
                 <span
                   className="absolute left-4 top-4 text-[0.55rem] uppercase tracking-[0.18em]"
                   style={{ color: "var(--color-text-secondary)" }}
@@ -155,6 +167,34 @@ export default function CollectionPage({
                   </span>
                 )}
 
+                {item.downloadUrl && (
+                  <a
+                    href={item.downloadUrl}
+                    download
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.12em] transition-colors hover:bg-[var(--color-bg-secondary)] focus-visible:outline-2 focus-visible:outline-offset-2"
+                    style={{
+                      color: "var(--color-text)",
+                      borderColor: "var(--color-border)",
+                      fontFamily: "var(--font-body)",
+                    }}
+                  >
+                    <svg
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      className="h-4 w-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+                      <path d="M5 17v3h14v-3" />
+                    </svg>
+                    Download certificate PDF
+                  </a>
+                )}
+
                 {item.details.length > 0 && (
                   <ul
                     className="mt-5 flex flex-wrap gap-2 border-t pt-4"
@@ -185,13 +225,18 @@ export default function CollectionPage({
               <Link
                 key={`${item.title}-${index}`}
                 href={item.href}
-                className="group block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text-secondary)]"
+                className={`group block rounded-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-text-secondary)] ${equalItemHeights ? "h-full" : ""}`}
                 aria-label={`View ${item.title} works`}
               >
                 {card}
               </Link>
             ) : (
-              <div key={`${item.title}-${index}`}>{card}</div>
+              <div
+                key={`${item.title}-${index}`}
+                className={equalItemHeights ? "h-full" : undefined}
+              >
+                {card}
+              </div>
             );
           })}
         </div>
