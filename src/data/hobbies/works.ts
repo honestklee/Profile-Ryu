@@ -27,6 +27,20 @@ export const hobbyWorks: Record<string, HobbyWork[]> = {
         },
       ],
     },
+    {
+      title: "3D Character",
+      year: 2026,
+      slides: [
+        {
+          image: "/images/Hobbies/Draw/3DRblx.png",
+          alt: "3D Roblox character scene",
+        },
+        {
+          image: "/images/Hobbies/Draw/Blender.png",
+          alt: "3D character scene created in Blender",
+        },
+      ],
+    },
   ],
   "video-editing": [],
   design: [
