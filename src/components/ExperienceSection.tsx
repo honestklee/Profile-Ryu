@@ -20,7 +20,7 @@ const experiences = [
   {
     company: "Quantum Teknologi Nusantara",
     initials: "Q",
-    date: "Sep 2024 – Apr 2025 extended Dec 2025 - Sep 2026",
+    date: "Sep 2024 – Apr 2025",
     role: "Software Engineer",
     side: "right",
     highlights: [

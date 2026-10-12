@@ -88,6 +88,118 @@ body {
   position: relative;
 }
 
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, var(--color-bg-secondary), transparent 65%),
+    var(--color-bg);
+  color: var(--color-text);
+  animation: loaderFadeOut 0.5s ease-in-out 1.5s both;
+}
+
+.site-loader::before,
+.site-loader::after {
+  position: absolute;
+  inset: 18px;
+  border: 1px solid var(--color-border);
+  content: "";
+  pointer-events: none;
+}
+
+.site-loader::after {
+  inset: 26px;
+  border-color: var(--color-ornament-strong);
+}
+
+.site-loader__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.site-loader__mark {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  line-height: 1;
+  letter-spacing: 0.12em;
+}
+
+.site-loader__clover {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  transform-origin: center;
+  animation: cloverDrift 3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+[data-theme="dark"] .site-loader__clover {
+  filter: invert(1);
+}
+
+.site-loader__label {
+  color: var(--color-text-secondary);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.site-loader__track {
+  width: 112px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.site-loader__track span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  background: var(--color-text);
+  animation: loaderProgress 1.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.site-content {
+  transition: opacity 0.35s ease;
+}
+
+@keyframes cloverDrift {
+  50% {
+    transform: rotate(12deg) scale(1.06);
+  }
+}
+
+@keyframes loaderProgress {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(245%);
+  }
+}
+
+@keyframes loaderFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader,
+  .site-loader__clover,
+  .site-loader__track span {
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}
+
 /* ── Royal ornamental background ── */
 body::before {
   content: '';
