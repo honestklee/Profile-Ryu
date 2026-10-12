@@ -8,7 +8,26 @@ export interface HobbyWork {
 }
 
 export const hobbyWorks: Record<string, HobbyWork[]> = {
-  drawing: [],
+  drawing: [
+    {
+      title: "Structure and Hair",
+      year: 2026,
+      slides: [
+        {
+          image: "/images/Hobbies/Draw/Draw1.jpg",
+          alt: "Character drawing study focused on hair structure, slide 1",
+        },
+        {
+          image: "/images/Hobbies/Draw/Draw2.jpg",
+          alt: "Character drawing study focused on hair structure, slide 2",
+        },
+        {
+          image: "/images/Hobbies/Draw/Draw3.jpg",
+          alt: "Character drawing study focused on hair structure, slide 3",
+        },
+      ],
+    },
+  ],
   "video-editing": [],
   design: [
     {
