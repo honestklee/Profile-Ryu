@@ -29,6 +29,17 @@ const certifications: CollectionItem[] = [
     details: ["Dicoding", "AWS Cloud", "Generative AI", "2026"],
   },
   {
+    title: "Memulai Pemrograman dengan Python",
+    description:
+      "A Dicoding completion certificate for learning the fundamentals of programming with Python.",
+    label: "Awarded · 11 October 2026",
+    mark: "PYTHON",
+    accent: "#7dd3fc",
+    image: "/images/Certificate/Python.png",
+    downloadUrl: "/images/Certificate/PythonDasar.pdf",
+    details: ["Dicoding", "Python", "2026"],
+  },
+  {
     title: "EF SET English Certificate",
     description:
       "Achieved an overall score of 69/100, corresponding to C1 Advanced on the CEFR scale. The certificate reports Reading at 85 (C2 Proficient) and Listening at 52 (B2 Upper Intermediate).",
@@ -46,7 +57,7 @@ export default function CertificationsPage() {
     <CollectionPage
       title="Certifications"
       eyebrow="Learning & credentials · RRAP"
-      intro="English proficiency certification and verified language assessment results."
+      intro="A collection of course completion certificates and verified language assessment results."
       items={certifications}
       equalItemHeights
     />
