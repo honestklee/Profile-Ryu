@@ -26,10 +26,11 @@ export function useTheme() {
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [mounted, setMounted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark" || stored === "light") {
       setTheme(stored);
       document.documentElement.setAttribute("data-theme", stored);
     } else {
@@ -41,6 +42,9 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       document.documentElement.setAttribute("data-theme", initial);
     }
     setMounted(true);
+
+    const loadingTimeout = window.setTimeout(() => setIsLoading(false), 2000);
+    return () => window.clearTimeout(loadingTimeout);
   }, []);
 
   useEffect(() => {
@@ -56,11 +60,25 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {isLoading && (
+        <div className="site-loader" role="status" aria-label="Loading website">
+          <div className="site-loader__content" aria-hidden="true">
+            <span className="site-loader__mark">RRAP</span>
+            <img
+              className="site-loader__clover"
+              src="/favicon.png"
+              alt=""
+            />
+            <span className="site-loader__label">Loading</span>
+            <span className="site-loader__track">
+              <span />
+            </span>
+          </div>
+        </div>
+      )}
       <div
-        style={{
-          visibility: mounted ? "visible" : "hidden",
-          transition: "visibility 0s",
-        }}
+        className="site-content"
+        style={{ visibility: mounted ? "visible" : "hidden" }}
       >
         {children}
       </div>
