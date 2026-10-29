@@ -257,25 +257,26 @@ section {
 
 .profile-image-base,
 .profile-image-reveal {
-  background-position: center;
-  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .profile-image-base {
-  background-image: url("/images/Background/profile-light.jpg");
+  background-image: url("/images/Background/RRAP.png");
 }
 
 .profile-image-reveal {
-  background-image: url("/images/Background/profile-dark.jpg");
+  background-image: url("/images/Background/RRAP.png");
 }
 
 [data-theme="dark"] .profile-image-base {
-  background-image: url("/images/Background/profile-dark.jpg");
+  background-image: url("/images/Background/RRAP.png");
   filter: brightness(0.48) saturate(0.78);
 }
 
 [data-theme="dark"] .profile-image-reveal {
-  background-image: url("/images/Background/profile-light.jpg");
+  background-image: url("/images/Background/RRAP.png");
   filter: brightness(0.48) saturate(0.78);
 }
 
