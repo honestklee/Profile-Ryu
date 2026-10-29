@@ -54,7 +54,10 @@ export default function ProfileSection() {
   const moveSpotlight = (event: React.PointerEvent<HTMLElement>) => {
     if (event.pointerType === "touch") return;
 
-    const bounds = event.currentTarget.getBoundingClientRect();
+    const image = revealImageRef.current;
+    if (!image) return;
+
+    const bounds = image.getBoundingClientRect();
     const position = pointer.current;
     position.targetX = event.clientX - bounds.left;
     position.targetY = event.clientY - bounds.top;
@@ -81,19 +84,19 @@ export default function ProfileSection() {
   return (
     <section
       id="profile"
-      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-20 text-center sm:px-8"
+      className="relative isolate flex min-h-screen items-stretch justify-end overflow-hidden px-4 py-20 text-center sm:px-8 md:items-center md:justify-center"
       onPointerEnter={moveSpotlight}
       onPointerMove={moveSpotlight}
       onPointerLeave={hideSpotlight}
     >
       <div
         aria-hidden="true"
-        className="profile-image-base pointer-events-none absolute inset-0"
+        className="profile-image-base pointer-events-none absolute inset-x-0 top-0 h-[44%] md:inset-y-0 md:left-0 md:right-auto md:h-full md:w-[64%]"
       />
       <div
         ref={revealImageRef}
         aria-hidden="true"
-        className="profile-image-reveal pointer-events-none absolute inset-0"
+        className="profile-image-reveal pointer-events-none absolute inset-x-0 top-0 h-[44%] md:inset-y-0 md:left-0 md:right-auto md:h-full md:w-[64%]"
       />
       <div
         aria-hidden="true"
@@ -104,16 +107,16 @@ export default function ProfileSection() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-linear-to-b from-transparent to-(--color-bg)"
       />
 
-      <div className="relative z-10 w-full max-w-5xl">
+      <div className="relative z-10 mt-auto w-full max-w-5xl pb-10 md:ml-auto md:mr-[4%] md:mt-0 md:w-[48%] md:translate-y-32 md:pb-0 md:text-left">
         {/* Decorative dot */}
         <div
-          className="mx-auto mb-8 h-2.5 w-2.5 rounded-full"
+          className="mx-auto mb-8 h-2.5 w-2.5 rounded-full md:ml-0 md:mr-auto"
           style={{ backgroundColor: "var(--color-text)" }}
         />
 
         {/* Name */}
         <h1
-          className="mb-6 whitespace-nowrap text-[clamp(1.55rem,8vw,7rem)] font-normal leading-[1.1] tracking-normal"
+          className="mb-6 whitespace-normal text-[clamp(1.55rem,8vw,7rem)] font-normal leading-[1.1] tracking-normal md:text-[clamp(1.55rem,5vw,5.5rem)]"
           style={{
             fontFamily: "var(--font-heading)",
             color: "var(--color-text)",
@@ -124,10 +127,10 @@ export default function ProfileSection() {
 
         {/* Description */}
         <p
-          className="mx-auto mb-12 max-w-lg text-[0.95rem] font-light leading-relaxed sm:text-base"
+          className="mx-auto mb-12 max-w-lg text-[0.95rem] font-light leading-relaxed sm:text-base md:ml-0 md:mr-auto"
           style={{
             fontFamily: "var(--font-body)",
-            color: "#000000",
+            color: "var(--color-text-secondary)",
             letterSpacing: "0.01em",
           }}
         >
@@ -135,7 +138,7 @@ export default function ProfileSection() {
         </p>
 
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-5">
+        <div className="flex items-center justify-center gap-5 md:justify-start">
           <a
             href="https://github.com/honestklee"
             target="_blank"
