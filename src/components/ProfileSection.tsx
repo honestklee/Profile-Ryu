@@ -1,103 +1,12 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-
 export default function ProfileSection() {
-  const revealImageRef = useRef<HTMLDivElement>(null);
-  const pointer = useRef({
-    x: 0,
-    y: 0,
-    targetX: 0,
-    targetY: 0,
-    radius: 0,
-    targetRadius: 0,
-    active: false,
-  });
-  const animationFrame = useRef<number | null>(null);
-
-  const animateSpotlight = () => {
-    const image = revealImageRef.current;
-    if (!image) return;
-
-    const position = pointer.current;
-    position.x += (position.targetX - position.x) * 0.18;
-    position.y += (position.targetY - position.y) * 0.18;
-    position.radius += (position.targetRadius - position.radius) * 0.14;
-
-    const radius = Math.max(0, position.radius);
-    const mask = `radial-gradient(circle ${radius}px at ${position.x}px ${position.y}px, transparent 0%, rgba(0, 0, 0, 0.18) 62%, black 100%)`;
-    image.style.maskImage = mask;
-    image.style.webkitMaskImage = mask;
-
-    const isMoving =
-      Math.abs(position.targetX - position.x) > 0.5 ||
-      Math.abs(position.targetY - position.y) > 0.5 ||
-      Math.abs(position.targetRadius - position.radius) > 0.5;
-
-    if (isMoving) {
-      animationFrame.current = requestAnimationFrame(animateSpotlight);
-    } else {
-      animationFrame.current = null;
-      if (!position.active) {
-        image.style.maskImage = "none";
-        image.style.webkitMaskImage = "none";
-      }
-    }
-  };
-
-  const scheduleSpotlight = () => {
-    if (animationFrame.current === null) {
-      animationFrame.current = requestAnimationFrame(animateSpotlight);
-    }
-  };
-
-  const moveSpotlight = (event: React.PointerEvent<HTMLElement>) => {
-    if (event.pointerType === "touch") return;
-
-    const image = revealImageRef.current;
-    if (!image) return;
-
-    const bounds = image.getBoundingClientRect();
-    const position = pointer.current;
-    position.targetX = event.clientX - bounds.left;
-    position.targetY = event.clientY - bounds.top;
-    position.targetRadius = 230;
-    position.active = true;
-    scheduleSpotlight();
-  };
-
-  const hideSpotlight = () => {
-    pointer.current.targetRadius = 0;
-    pointer.current.active = false;
-    scheduleSpotlight();
-  };
-
-  useEffect(
-    () => () => {
-      if (animationFrame.current !== null) {
-        cancelAnimationFrame(animationFrame.current);
-      }
-    },
-    [],
-  );
+  const linkClass =
+    "transition-all duration-200 hover:scale-110 hover:opacity-70";
 
   return (
     <section
       id="profile"
-      className="relative isolate flex min-h-screen items-stretch justify-end overflow-hidden px-4 py-20 text-center sm:px-8 md:items-center md:justify-center"
-      onPointerEnter={moveSpotlight}
-      onPointerMove={moveSpotlight}
-      onPointerLeave={hideSpotlight}
+      className="relative isolate flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center sm:px-8"
     >
-      <div
-        aria-hidden="true"
-        className="profile-image-base pointer-events-none absolute inset-x-0 top-0 h-[44%] md:inset-y-0 md:left-0 md:right-auto md:h-full md:w-[64%]"
-      />
-      <div
-        ref={revealImageRef}
-        aria-hidden="true"
-        className="profile-image-reveal pointer-events-none absolute inset-x-0 top-0 h-[44%] md:inset-y-0 md:left-0 md:right-auto md:h-full md:w-[64%]"
-      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-linear-to-b from-(--color-bg) to-transparent"
@@ -107,16 +16,16 @@ export default function ProfileSection() {
         className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-linear-to-b from-transparent to-(--color-bg)"
       />
 
-      <div className="relative z-10 mt-auto w-full max-w-5xl pb-10 md:ml-auto md:mr-[4%] md:mt-0 md:w-[48%] md:translate-y-32 md:pb-0 md:text-left">
+      <div className="relative z-10 w-full max-w-5xl">
         {/* Decorative dot */}
         <div
-          className="mx-auto mb-8 h-2.5 w-2.5 rounded-full md:ml-0 md:mr-auto"
+          className="mx-auto mb-4 h-2.5 w-2.5 rounded-full sm:mb-6"
           style={{ backgroundColor: "var(--color-text)" }}
         />
 
         {/* Name */}
         <h1
-          className="mb-6 whitespace-normal text-[clamp(1.55rem,8vw,7rem)] font-normal leading-[1.1] tracking-normal md:text-[clamp(1.55rem,5vw,5.5rem)]"
+          className="mb-3 break-words text-[clamp(1.55rem,7vw,5.5rem)] font-normal leading-[1.1] tracking-normal sm:mb-5"
           style={{
             fontFamily: "var(--font-heading)",
             color: "var(--color-text)",
@@ -127,7 +36,7 @@ export default function ProfileSection() {
 
         {/* Description */}
         <p
-          className="mx-auto mb-12 max-w-lg text-[0.95rem] font-light leading-relaxed sm:text-base md:ml-0 md:mr-auto"
+          className="mx-auto mb-6 max-w-lg text-[clamp(0.85rem,3.5vw,1rem)] font-light leading-relaxed sm:mb-8"
           style={{
             fontFamily: "var(--font-body)",
             color: "var(--color-text-secondary)",
@@ -138,12 +47,12 @@ export default function ProfileSection() {
         </p>
 
         {/* Social Links */}
-        <div className="flex items-center justify-center gap-5 md:justify-start">
+        <div className="flex items-center justify-center gap-4 sm:gap-5">
           <a
             href="https://github.com/honestklee"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-200 hover:scale-110 hover:opacity-70"
+            className={linkClass}
             style={{ color: "var(--color-text)" }}
             aria-label="GitHub"
           >
@@ -155,7 +64,7 @@ export default function ProfileSection() {
             href="https://www.instagram.com/ryuuadtya/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-200 hover:scale-110 hover:opacity-70"
+            className={linkClass}
             style={{ color: "var(--color-text)" }}
             aria-label="Instagram"
           >
@@ -169,7 +78,7 @@ export default function ProfileSection() {
             href="https://www.linkedin.com/in/rizky-ryu-245869271/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-all duration-200 hover:scale-110 hover:opacity-70"
+            className={linkClass}
             style={{ color: "var(--color-text)" }}
             aria-label="LinkedIn"
           >
@@ -178,6 +87,13 @@ export default function ProfileSection() {
             </svg>
           </a>
         </div>
+        <a
+          href="/rrap-profile.html"
+          className="mt-5 inline-block text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
+          style={{ color: "var(--color-text-secondary)" }}
+        >
+          rrap-profile
+        </a>
       </div>
     </section>
   );

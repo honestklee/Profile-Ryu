@@ -255,31 +255,6 @@ section {
   z-index: 2;
 }
 
-.profile-image-base,
-.profile-image-reveal {
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.profile-image-base {
-  background-image: url("/images/Background/RRAP.png");
-}
-
-.profile-image-reveal {
-  background-image: url("/images/Background/RRAP.png");
-}
-
-[data-theme="dark"] .profile-image-base {
-  background-image: url("/images/Background/RRAP.png");
-  filter: brightness(0.48) saturate(0.78);
-}
-
-[data-theme="dark"] .profile-image-reveal {
-  background-image: url("/images/Background/RRAP.png");
-  filter: brightness(0.48) saturate(0.78);
-}
-
 /* ── Card animation ── */
 @keyframes fadeSlideUp {
   from {
