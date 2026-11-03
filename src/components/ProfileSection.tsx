@@ -88,7 +88,7 @@ export default function ProfileSection() {
           </a>
         </div>
         <a
-          href="/rrap-profile.html"
+          href="/rrap-profile/"
           className="mt-5 inline-block text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
           style={{ color: "var(--color-text-secondary)" }}
         >
