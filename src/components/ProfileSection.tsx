@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ProfileSection() {
   const linkClass =
     "transition-all duration-200 hover:scale-110 hover:opacity-70";
@@ -87,13 +89,13 @@ export default function ProfileSection() {
             </svg>
           </a>
         </div>
-        <a
-          href="/rrap-profile.html"
+        <Link
+          href="/rrap-profile"
           className="mt-5 inline-block text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
           style={{ color: "var(--color-text-secondary)" }}
         >
           rrap-profile
-        </a>
+        </Link>
       </div>
     </section>
   );
