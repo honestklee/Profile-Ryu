@@ -92,7 +92,7 @@ export default function ProfileSection() {
           className="mt-5 inline-block text-sm underline underline-offset-4 transition-opacity hover:opacity-70"
           style={{ color: "var(--color-text-secondary)" }}
         >
-          rrap-profile
+          rrap-profile.
         </a>
       </div>
     </section>
